@@ -206,12 +206,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsCarta.Tables[0].Rows.Count > 0)
                 LlenaCartaGarantia(dsCarta, grupo);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -284,12 +284,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsCarta.Tables[0].Rows.Count > 0 && dsCartaDet.Tables[0].Rows.Count > 0)
                 LlenaCartaPago(dsCarta, dsCartaDet, grupo);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -334,12 +334,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsCons.Tables[0].Rows.Count > 0)
                 LlenaDocMicroseguro(id, dsCons, tipoProd, formato);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -469,13 +469,13 @@ public partial class _Default : System.Web.UI.Page
             if (dsNom.Tables[0].Rows.Count > 0)
                 LlenaConsultaBuro(dsInfo, dsNom, dsDir, dsCta, dsRes, dsCons, nomUsuario);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
 
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -535,7 +535,7 @@ public partial class _Default : System.Web.UI.Page
                            ",TO_CHAR(CR.FVIGENCIA,'DD/MM/YYYY') FECHAVIG " +
                            ",TO_CHAR(SYSDATE,'DD/MM/YYYY') FECHAIMP " +
                            ",TO_CHAR(SYSDATE,'HH24:MI:SS') HORAIMP " +
-                           ",DECODE(INSTCRED, 'CC','REPORTE DE CRÉDITO (CIRCULO DE CRÉDITO)','BC','REPORTE DE BURÓ DE CRÉDITO') TITULO " +
+                           ",DECODE(INSTCRED, 'CC','REPORTE DE CRÃ‰DITO (CIRCULO DE CRÃ‰DITO)','BC','REPORTE DE BURÃ“ DE CRÃ‰DITO') TITULO " +
                            ",CR.FOLIOCONS NUMCONS " +
                            ",(SELECT COUNT(*) FROM " + strTablaCta + " WHERE CDGEM = CR.CDGEM AND " + strCampo + " = CR." + strCampo + " AND FCONSULTA = TRUNC(CR.FCONSULTA) AND INSTCRED = CR.INSTCRED AND TO_CHAR(FINICTA,'YYYY') = TO_CHAR(SYSDATE,'YYYY')) REGISTROS " +
                            ",(SELECT MIN(FINICTA) FROM " + strTablaCta + " WHERE CDGEM = CR.CDGEM AND " + strCampo + " = CR." + strCampo + " AND FCONSULTA = TRUNC(CR.FCONSULTA) AND INSTCRED = CR.INSTCRED) FECCRED " +
@@ -732,13 +732,13 @@ public partial class _Default : System.Web.UI.Page
             if (dsNom.Tables[0].Rows.Count > 0)
                 LlenaConsultaRepCredito(sic, dsInfo, dsNom, dsDir, dsCta, dsRes, dsCons, dsMens, dsScore, nomUsuario);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
 
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -827,12 +827,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsContrato.Tables[0].Rows.Count > 0 && dsCliente.Tables[0].Rows.Count > 0)
                 LlenaContrato(dsContrato, dsCliente);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -1084,7 +1084,7 @@ public partial class _Default : System.Web.UI.Page
                                           "'R', 'Retardo', " +
                                           "'F', 'Falta', " +
                                           "'P', 'Permiso', " +
-                                          "'MP', 'Mandó Pago') ASIST " +
+                                          "'MP', 'MandÃ³ Pago') ASIST " +
                        ",NS.NOMBRE GRUPO " +
                        ",NOMBREC(CL.CDGEM, CL.CODIGO,'I','N',NULL,NULL,NULL,NULL) NOMBRE_CL " +
                        ",TO_CHAR(PRN.INICIO,'DD/MM/YYYY') FINICIO " +
@@ -1133,13 +1133,13 @@ public partial class _Default : System.Web.UI.Page
             if (dsGrupo.Tables[0].Rows.Count > 0 || dsAcred.Tables[0].Rows.Count > 0)
                 LlenaControlPagos(id, ds, dsGrupo, dsAcred, Convert.ToDateTime(fecha), nomUsuario);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
 
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -1224,7 +1224,7 @@ public partial class _Default : System.Web.UI.Page
                                           "'R', 'RETARDO', " +
                                           "'F', 'FALTA', " +
                                           "'P', 'PERMISO', " +
-                                          "'MP', 'MANDÓ PAGO') ASIST " +
+                                          "'MP', 'MANDÃ“ PAGO') ASIST " +
                     ",TO_CHAR(CS.FREALPAGO, 'DD/MM/YYYY') FECHA " +
                     ",CS.SECUENCIA " +
                     ",CS.TIPO " +
@@ -1252,13 +1252,13 @@ public partial class _Default : System.Web.UI.Page
                 LlenaControlSemanalEmp(dsGrupo, dsAcred);
             }
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
 
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -1768,17 +1768,17 @@ public partial class _Default : System.Web.UI.Page
                 LlenaControlSemanalImp(dsGrupo, dsAcred);
             }
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
 
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
-    //METODO QUE GENERA INFORMACIÓN DEL ESTADO DE CUENTA GRUPAL
+    //METODO QUE GENERA INFORMACIÃ“N DEL ESTADO DE CUENTA GRUPAL
     private void getEstadoCuentaGrupal(string grupo, string ciclo)
     {
         string empresa = cdgEmpresa;
@@ -2009,12 +2009,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsEnc.Tables[0].Rows.Count > 0)
                 LlenaEstadoCuenta(dsEnc, dsDet);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2239,13 +2239,13 @@ public partial class _Default : System.Web.UI.Page
                     LlenaAutPagoGL(dsGrupo, dsAcred, dsDoc);
             }
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
             
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2310,13 +2310,13 @@ public partial class _Default : System.Web.UI.Page
             if (dsAcred.Tables[0].Rows.Count > 0)
                 LlenaImpresionCheques(dsAcred, cuenta);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
 
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2426,12 +2426,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsDet.Tables[0].Rows.Count > 0 && dsAmort.Tables[0].Rows.Count > 0)
                 LlenaPagare(dsDet, dsAmort);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2540,12 +2540,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsDet.Tables[0].Rows.Count > 0 && dsAval.Tables[0].Rows.Count > 0)
                 LlenaPagareGrupal(dsDet, dsAval);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2660,13 +2660,13 @@ public partial class _Default : System.Web.UI.Page
                 LlenaImpresionCheques(dsAcred, cuenta);
             }
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
 
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2713,12 +2713,12 @@ public partial class _Default : System.Web.UI.Page
             if (ds.Tables[0].Rows.Count > 0)
                 LlenaRptSitCartera(ds, dsPDI, id, Convert.ToDateTime(fecha), Convert.ToInt32(nivel), titulo, nomUsuario);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2809,12 +2809,12 @@ public partial class _Default : System.Web.UI.Page
             if (dsGrupo.Tables[0].Rows.Count > 0 && dsAcred.Tables[0].Rows.Count > 0)
                 LlenaSolicitudCred(ds, dsGrupo, dsAcred, dsExcAcred, dsMaxAcred, nomUsuario);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÃ³ informaciÃ³n relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -2857,7 +2857,7 @@ public partial class _Default : System.Web.UI.Page
         {
             string mensaje = exAsync.Message;
             Response.Close();
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 
@@ -4295,7 +4295,8 @@ public partial class _Default : System.Web.UI.Page
             cuenta == "16" || cuenta == "17" || cuenta == "18" || cuenta == "20" || 
             cuenta == "21" || cuenta == "22" || cuenta == "23" || cuenta == "24" ||
             cuenta == "25" || cuenta == "26" || cuenta == "27" || cuenta == "32" ||
-            cuenta == "33")
+            cuenta == "33" || cuenta == "34" || cuenta == "35" || cuenta == "36" ||
+			cuenta == "38" || cuenta == "39" )
             CargaReporte("ChequeBancomerVST.rpt");
 
         grcReporte.SetDataSource(dsCheque);
@@ -4790,7 +4791,7 @@ public partial class _Default : System.Web.UI.Page
         catch (Exception ex)
         {
             string mensaje = ex.Message;
-            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la información solicitada.");
+            LlenaRptError("", "No es posible generar el documento.\n\nVerifique la informaciÃ³n solicitada.");
         }
     }
 }

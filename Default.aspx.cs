@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Configuration;
 using System.Web;
@@ -73,15 +73,15 @@ public partial class _Default : System.Web.UI.Page
             fechaFin = (fechaFin != null ? Convert.ToDateTime(fechaFin).ToString("dd/MM/yyyy"): fechaFin);
             tipoDoc = (tipoDoc != null ? tipoDoc : "PDF");
             clns = (clns != null ? clns : "G");
-            //id = "35";
+            //id = "43";
             //usuario = "ADMIN";
             //nomUsuario = "ADMIN";
-            //fecha = "27/02/2024";
+            //fecha = "30/10/2025";
             //fechaFin = "07/11/2014";
             //region = "000";
             //sucursal = "005";
             //coord = "003";
-            //acred = "014371";
+            //acred = "007109";
             //asesor = "000000";
             //supervisor = "000000";
             //nivel = "3";
@@ -91,12 +91,12 @@ public partial class _Default : System.Web.UI.Page
             //cartVenc = "1";
             //cartRest = "1";
             //cartCast = "0";
-            //grupo = "017088";
-            //ciclo = "01";
+            //grupo = "003485";
+            //ciclo = "06";
             //cuenta = "14";
             //chqIni = "0000661";
             //chqFin = "0000665";
-            //tipo = "C";
+            //tipo = "P";
             //formato = "CertificadoVST.rpt";
             //puesto = "D";
             //mes = "07";
@@ -284,7 +284,7 @@ public partial class _Default : System.Web.UI.Page
             if (dsCarta.Tables[0].Rows.Count > 0 && dsCartaDet.Tables[0].Rows.Count > 0)
                 LlenaCartaPago(dsCarta, dsCartaDet, grupo);
             else
-                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontrÓ información relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
@@ -2523,7 +2523,7 @@ public partial class _Default : System.Web.UI.Page
                     "WHERE CODIGO_EMP = '" + empresa + "' " +
                     "AND CODIGO_GPO = '" + grupo + "' " +
                     "AND CDGPE = '" + usuario + "' " +
-                    "AND TIPO_DOC = 'PAGARE' " +
+                    "AND TIPO_DOC = 'PAGAREGPO' " +
                     "ORDER BY TO_NUMBER(CANTIDAD_NUMERO) DESC, NOMBRE_CTE ";
 
             iRes = db.ExecuteDS(ref dsDet, query, CommandType.Text);

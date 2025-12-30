@@ -192,6 +192,8 @@
               <xs:element name="PARCIALIDAD" msprop:Generator_UserColumnName="PARCIALIDAD" msprop:Generator_ColumnPropNameInRow="PARCIALIDAD" msprop:Generator_ColumnVarNameInTable="columnPARCIALIDAD" msprop:Generator_ColumnPropNameInTable="PARCIALIDADColumn" type="xs:decimal" minOccurs="0" />
               <xs:element name="REF_PAYCASH_GL" msprop:Generator_UserColumnName="REF_PAYCASH_GL" msprop:Generator_ColumnVarNameInTable="columnREF_PAYCASH_GL" msprop:Generator_ColumnPropNameInRow="REF_PAYCASH_GL" msprop:Generator_ColumnPropNameInTable="REF_PAYCASH_GLColumn" type="xs:string" minOccurs="0" />
               <xs:element name="BARCODE_PAYCASH_GL" msprop:Generator_UserColumnName="BARCODE_PAYCASH_GL" msprop:Generator_ColumnVarNameInTable="columnBARCODE_PAYCASH_GL" msprop:Generator_ColumnPropNameInRow="BARCODE_PAYCASH_GL" msprop:Generator_ColumnPropNameInTable="BARCODE_PAYCASH_GLColumn" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="CLABE_GL" msprop:Generator_UserColumnName="CLABE_GL" msprop:Generator_ColumnVarNameInTable="columnCLABE_GL" msprop:Generator_ColumnPropNameInRow="CLABE_GL" msprop:Generator_ColumnPropNameInTable="CLABE_GLColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="CLABE_PAGO" msprop:Generator_UserColumnName="CLABE_PAGO" msprop:Generator_ColumnVarNameInTable="columnCLABE_PAGO" msprop:Generator_ColumnPropNameInRow="CLABE_PAGO" msprop:Generator_ColumnPropNameInTable="CLABE_PAGOColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

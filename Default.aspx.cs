@@ -73,7 +73,7 @@ public partial class _Default : System.Web.UI.Page
             fechaFin = (fechaFin != null ? Convert.ToDateTime(fechaFin).ToString("dd/MM/yyyy"): fechaFin);
             tipoDoc = (tipoDoc != null ? tipoDoc : "PDF");
             clns = (clns != null ? clns : "G");
-            //id = "43";
+            //id = "27";
             //usuario = "ADMIN";
             //nomUsuario = "ADMIN";
             //fecha = "30/10/2025";
@@ -91,8 +91,8 @@ public partial class _Default : System.Web.UI.Page
             //cartVenc = "1";
             //cartRest = "1";
             //cartCast = "0";
-            //grupo = "003485";
-            //ciclo = "06";
+            //grupo = "017012";
+            //ciclo = "07";
             //cuenta = "14";
             //chqIni = "0000661";
             //chqFin = "0000665";
@@ -250,6 +250,8 @@ public partial class _Default : System.Web.UI.Page
                     ",IM.PARC_SIN_IVA PARCIALIDAD " +
                     ",(SELECT REF_PAYCASH FROM PAYCASH_REF WHERE CDGEM = IM.CODIGO_EMP AND CDGCLNS = IM.CODIGO_GPO AND CDGTPC = IM.TIPO_PROD AND TIPO = 1) REF_PAYCASH " +
                     ",(SELECT REF_PAYCASH FROM PAYCASH_REF WHERE CDGEM = IM.CODIGO_EMP AND CDGCLNS = IM.CODIGO_GPO AND CDGTPC = IM.TIPO_PROD AND TIPO = 0) REF_PAYCASH_GL " +
+                    ",CLABE_GL " +
+                    ",CLABE_PAGO " +
                     "FROM IMPCONT IM " +
                     "WHERE IM.CODIGO_EMP = '" + empresa + "' " +
                     queryGrupo +
@@ -284,7 +286,7 @@ public partial class _Default : System.Web.UI.Page
             if (dsCarta.Tables[0].Rows.Count > 0 && dsCartaDet.Tables[0].Rows.Count > 0)
                 LlenaCartaPago(dsCarta, dsCartaDet, grupo);
             else
-                LlenaRptError("", "No se encontrÓ información relacionada con los datos de consulta");
+                LlenaRptError("", "No se encontró información relacionada con los datos de consulta");
         }
         catch (Exception ex)
         {
@@ -1965,18 +1967,18 @@ public partial class _Default : System.Web.UI.Page
 
             iRes = db.ExecuteDS(ref dsEnc, query, CommandType.Text);
 
-            query = "SELECT MP.CDGEM, " +
-                    "MP.CLNS, " +
-                    "MP.CDGCLNS, " +
-                    "MP.CDGCL, " +
-                    "MP.PERIODO, " +
-                    "MP.TIPO, " +
-                    "MP.FREALDEP, " +
-                    "MP.CANTIDAD, " +
-                    "MP.PAGADOCAP, " +
-                    "MP.PAGADOINT, " +
-                    "MP.PAGADOREC, " +
-                    "NVL((SELECT CASE WHEN FDEPOSITO IS NOT NULL THEN " +
+            query = "SELECT MP.CDGEM " +
+                    ",MP.CLNS " +
+                    ",MP.CDGCLNS " +
+                    ",MP.CDGCL " +
+                    ",MP.PERIODO " +
+                    ",MP.TIPO " +
+                    ",MP.FREALDEP " +
+                    ",MP.CANTIDAD " +
+                    ",MP.PAGADOCAP " +
+                    ",MP.PAGADOINT " +
+                    ",MP.PAGADOREC " +
+                    ",NVL((SELECT CASE WHEN FDEPOSITO IS NOT NULL THEN " +
                          "' (' || TO_CHAR(FDEPOSITO,'DD/MM/YYYY') || ')' " +
                          "ELSE '' " +
                          "END " +
@@ -1987,11 +1989,12 @@ public partial class _Default : System.Web.UI.Page
                          "AND CDGCB = MP.CDGCB " +
                          "AND SECUENCIAIM = MP.SECUENCIA " +
                          "AND CANTIDAD = MP.CANTIDAD " +
-                         "AND FECHAIM = MP.FDEPOSITO),'') PAGOIDEN, " +
-                    "(SELECT (IVA/PORCENTAJE) " +
+                         "AND FECHAIM = MP.FDEPOSITO),'') PAGOIDEN " +
+                    ",(SELECT (IVA/PORCENTAJE) " +
                     "FROM CF " +
                     "WHERE PRN.CDGEM = CF.CDGEM " +
                     "AND PRN.CDGFDI = CF.CDGFDI) IVA " +
+                    ",MP.CDGCB " +
                     "FROM MP, PRN " +
                     "WHERE MP.CDGEM = '" + empresa + "' " +
                     "AND MP.CDGNS = '" + grupo + "' " +
@@ -2987,6 +2990,7 @@ public partial class _Default : System.Web.UI.Page
         drCarta["RECA"] = dsCarta.Tables[0].Rows[0]["NOM_INTEG_DNI"];
         drCarta["BARCODE_OPENPAY"] = Funciones.ImagenToByte(imgBarcodeOpenPay);
         drCarta["BARCODE_PAYCASH"] = Funciones.ImagenToByte(imgBarcodePayCash);
+        drCarta["CLABE_GL"] = dsCarta.Tables[0].Rows[0]["CLABE_GL"];
         sucursal = dsCarta.Tables[0].Rows[0]["CDGCO"].ToString();
 
         dtRepCarta.Rows.Add(drCarta);
@@ -3041,6 +3045,8 @@ public partial class _Default : System.Web.UI.Page
         drCarta["REF_PAYCASH_GL"] = dsCarta.Tables[0].Rows[0]["REF_PAYCASH_GL"];
         drCarta["BARCODE_PAYCASH"] = Funciones.ImagenToByte(imgBarcodePayCash);
         drCarta["BARCODE_PAYCASH_GL"] = Funciones.ImagenToByte(imgBarcodePayCashGl);
+        drCarta["CLABE_GL"] = dsCarta.Tables[0].Rows[0]["CLABE_GL"];
+        drCarta["CLABE_PAGO"] = dsCarta.Tables[0].Rows[0]["CLABE_PAGO"];
 
         dtRepCarta.Rows.Add(drCarta);
         dsRepCarta.Tables["dtCartaPago"].ImportRow(drCarta);
@@ -3062,9 +3068,9 @@ public partial class _Default : System.Web.UI.Page
         if (grupo != null)
         {
             if (tipoProd == "01" || tipoProd == "03")
-                CargaReporte("CartaPagoComunalPayCash.rpt");
+                CargaReporte("CartaPagoComunalPayCashTrans.rpt");
             else if (tipoProd == "02")
-                CargaReporte("CartaPagoAdicionalPayCash.rpt");
+                CargaReporte("CartaPagoAdicionalPayCashTrans.rpt");
         }
         else if (grupo == null)
             CargaReporte("CartaPagoIndividual.rpt");
@@ -4243,6 +4249,7 @@ public partial class _Default : System.Web.UI.Page
             drDet["CDGCL"] = dsDet.Tables[0].Rows[i]["CDGCL"];
             drDet["TIPO"] = dsDet.Tables[0].Rows[i]["TIPO"];
             drDet["IVA"] = dsDet.Tables[0].Rows[i]["IVA"];
+            drDet["CDGCB"] = dsDet.Tables[0].Rows[i]["CDGCB"];
             dtDet.Rows.Add(drDet);
             dsEdoCta.Tables["dtDet"].ImportRow(drDet);
         }
